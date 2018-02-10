@@ -7,29 +7,54 @@ namespace blogpost
     {
         static void Main(string[] args)
         {
-            string document;
-            string linktitle = "New Page";
-            string newpagename;
-            string pagedata;
+            string documentTemp;
+            bool testing = false;
+            
 
 
+
+            //read blogpost.config.json
+                // TODO
+
+            //populate variables from json
+            string directory = "www.cryptospace.com";
+            string linkTitle = "New Page";
+            DateTime now = DateTime.Now;
+            string newPageName = now.ToString("u").ToString().Substring(0,10).Replace("\\", "-") + ".html";
+            
+            // string pageData = "<p>I'm a bannana!</p>";
+            
             try {
             
             // create new page
 
             // create new link
+            string newLink = "<h3>"+ newPageName.Substring(0,10)+ "</h3><ul><li><a href=\""+newPageName+"\">"+ linkTitle+ "</a></li>";
 
             // read HTML file
-                FileStream fileStream = new FileStream("index.html", FileMode.Open);
+                FileStream fileStream = new FileStream(directory + "/" + "index.html", FileMode.Open);
                     using (StreamReader reader = new StreamReader(fileStream))
                     {
-                         document = reader.ReadToEnd();
+                         documentTemp = reader.ReadToEnd();
                     }        
 
-            // insert link
-
+            // replace <!-- NEW LINKS HERE--> with link
+             string newDocument =  documentTemp.Replace("<!-- NEW LINKS HERE-->", "<!-- NEW LINKS HERE-->" + newLink);
+            
             // replace HTML file
+            if (!testing) {
 
+                using (var newfileStream = System.IO.File.Create(directory + "/"+ "index.html")) {
+
+                    using (var fileWriter = new System.IO.StreamWriter(newfileStream)) { 
+
+                        fileWriter.WriteLine(newDocument);
+
+                    }
+
+                }
+
+            }
 
             } catch (Exception exception) {
 
