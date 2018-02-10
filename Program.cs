@@ -48,9 +48,10 @@ namespace blogpost
                 using (StreamReader reader = new StreamReader(incomingDataFileStream))
                 {
                     incomingData = reader.ReadToEnd();
+                    middle = incomingData;
                 }
 
-                FileStream secondHalfFileStream = new FileStream(incomingFileName, FileMode.Open);
+                FileStream secondHalfFileStream = new FileStream("template_second_half", FileMode.Open);
                 using (StreamReader reader = new StreamReader(secondHalfFileStream))
                 {
                     secondHalf = reader.ReadToEnd();
@@ -110,7 +111,7 @@ namespace blogpost
                 }
 
                 // replace <!-- NEW LINKS HERE--> with link data
-                string newDocument = documentTemp.Replace("<!-- NEW LINKS HERE-->", "<!-- NEW LINKS HERE-->" + newLink);
+                string newDocument = documentTemp.Replace("<!-- NEW LINKS HERE-->", "<!-- NEW LINKS HERE-->"+"\n" + newLink + "\n");
 
 
 
