@@ -1,8 +1,8 @@
 bin/
 bin/*
 bin/Debug/netcoreapp2.0/
-obj/*
-bin/Debug/netcoreapp2.0/*
+obj/*.*
+bin/Debug/netcoreapp2.0/*.*
 www.cryptospace.com/
 obj/
 *.log
