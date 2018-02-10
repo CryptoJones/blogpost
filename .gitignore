@@ -1,5 +1,6 @@
 bin/
 bin/*
+bin/Debug/netcoreapp2.0/
 obj/*
 www.cryptospace.com/
 obj/
