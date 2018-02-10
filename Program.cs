@@ -9,41 +9,43 @@ namespace blogpost
         static void Main(string[] args)
         {
             DateTime now = DateTime.Now;
-            string documentTemp;
-            string directory = "www.cryptospace.com";
+            string documentTemp = String.Empty;
+            string middle = String.Empty;
+            string linkTitle = String.Empty;
+            string directory = "/var/www/www.cryptospace.com";
             string newPageName = now.ToString("u").ToString().Substring(0, 10).Replace("\\", "-") + ".html";
             string firstHalf = "<!DOCTYPE html><html lang=\"en-US\"><head><meta charset=\"UTF-8\" /><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><!-- SEO --><title>Aaron K. Clark - CryptoJones</title><meta name=\"description\" content=\"Aaron K. Clark, CryptoJones, CV, Resume, Email, Cybersecurity, Software Engineering, Information Technology\" /><meta name=\"robots\" content=\"index, follow\" /><meta name=\"referrer\" content=\"always\" /><!-- Favicon --><link rel=\"icon\" type=\"image/png\" href=\"images/favicon.png\" sizes=\"32x32\"><!-- Styles --><link rel='stylesheet' href='css/split.css' type='text/css' media='screen' /><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" /></head><body id=\"fullsingle\" class=\"page-template-page-fullsingle-split\"><div class=\"fs-split\"><!-- Image Side --><div class=\"split-image\"></div><!-- Content Side --><div class=\"split-content\"><div class=\"split-content-vertically-center\"><div class=\"split-intro\"><span class=\"tagline\">" + newPageName.Substring(0, 10) + "</span></div><div class=\"split-bio\">";
             string secondHalf = "</div><div class=\"split-lists\"><div class=\"split-list\"><ul><li><a href=\"index.html\">Go Back</a></li></div></div><div class=\"split-credit\"><p>&copy;2017 - Present <a href=\"#\">Aaron K. Clark</a></div></div></div></div></body></html>";
 
             //read blogpost.config.json
 
+
             try
             {
-
-                FileStream fileStream = new FileStream("blogpost.config.json", FileMode.Open);
+                FileStream fileStream = new FileStream(directory + "/blogpost.config.json", FileMode.Open);
 
                 using (StreamReader reader = new StreamReader(fileStream))
                 {
                     documentTemp = reader.ReadToEnd();
                 }
 
+
+                // deserialze to object from json
+                BlogPost bp = JsonConvert.DeserializeObject<BlogPost>(documentTemp);
+
+                // populate variables with object data
+                linkTitle = bp.title;
+                middle = bp.data;
+
             }
             catch (Exception ex)
             {
 
                 Console.WriteLine("Error occured. See Log.");
-                LogMessage("Exception caught: " + ex);
-
+                DateTime eventTime = DateTime.Now;
+                LogMessage(eventTime + " - Exception caught: " + ex);
+                Environment.Exit(-1);
             }
-
-            // deserialze to object from json
-            BlogPost bp = (BlogPost)JsonConvert.DeserializeObject(documentTemp);
-
-
-            //populate variables from json
-
-            string linkTitle = bp.title;
-            string middle = bp.data;
 
 
             // create new page
@@ -67,7 +69,9 @@ namespace blogpost
             {
 
                 Console.WriteLine("Error occured. See Log.");
-                LogMessage("Exception caught: " + ex);
+                DateTime eventTime = DateTime.Now;
+                LogMessage(eventTime + " - Exception caught: " + ex);
+                Environment.Exit(-1);
             }
 
             // create new link
@@ -79,9 +83,9 @@ namespace blogpost
             try
             {
 
-                FileStream fileStream = new FileStream(directory + "/" + "index.html", FileMode.Open);
+                FileStream exfileStream = new FileStream(directory + "/" + "index.html", FileMode.Open);
 
-                using (StreamReader reader = new StreamReader(fileStream))
+                using (StreamReader reader = new StreamReader(exfileStream))
                 {
                     documentTemp = reader.ReadToEnd();
                 }
@@ -109,7 +113,9 @@ namespace blogpost
             {
 
                 Console.WriteLine("Error occured. See Log.");
-                LogMessage("Exception caught: " + ex);
+                DateTime eventTime = DateTime.Now;
+                LogMessage(eventTime + " - Exception caught: " + ex);
+                Environment.Exit(-1);
             }
 
 
@@ -125,10 +131,10 @@ namespace blogpost
             try
             {
 
-                var logPath = newFileName + System.IO.Path.GetTempFileName() + ".log";
-                using (var writer = File.CreateText(logPath))
+                var logPath = newFileName + ".log";
+                using (var writer = File.AppendText(logPath))
                 {
-                    writer.Write(message);
+                    writer.WriteLine(message);
                 }
 
             }
@@ -136,6 +142,7 @@ namespace blogpost
             {
 
                 Console.WriteLine("Something went wrong:" + ex);
+                Environment.Exit(-1);
 
             }
         }
