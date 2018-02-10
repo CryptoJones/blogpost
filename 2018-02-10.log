@@ -46,3 +46,10 @@ File name: '/home/akclark/Source/blogpost/blogpost.config.json'
    at blogpost.Program.Main(String[] args) in /home/akclark/Source/blogpost/Program.cs:line 25
 2/10/18 1:42:37 PM - Exception caught: System.InvalidCastException: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'blogpost.BlogPost'.
    at blogpost.Program.Main(String[] args) in /home/akclark/Source/blogpost/Program.cs:line 47
+2/10/18 2:15:50 PM - Exception caught: System.IO.FileNotFoundException: Could not find file '/home/akclark/Source/blogpost/blogpost.config.json'.
+File name: '/home/akclark/Source/blogpost/blogpost.config.json'
+   at Interop.ThrowExceptionForIoErrno(ErrorInfo errorInfo, String path, Boolean isDirectory, Func`2 errorRewriter)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String path, OpenFlags flags, Int32 mode)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at blogpost.Program.Main(String[] args) in /home/akclark/Source/blogpost/Program.cs:line 26
