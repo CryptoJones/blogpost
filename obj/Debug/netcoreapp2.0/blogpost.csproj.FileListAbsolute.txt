@@ -1,0 +1,10 @@
+/home/akclark/Source/blogpost/bin/Debug/netcoreapp2.0/blogpost.deps.json
+/home/akclark/Source/blogpost/bin/Debug/netcoreapp2.0/blogpost.runtimeconfig.json
+/home/akclark/Source/blogpost/bin/Debug/netcoreapp2.0/blogpost.runtimeconfig.dev.json
+/home/akclark/Source/blogpost/bin/Debug/netcoreapp2.0/blogpost.dll
+/home/akclark/Source/blogpost/bin/Debug/netcoreapp2.0/blogpost.pdb
+/home/akclark/Source/blogpost/obj/Debug/netcoreapp2.0/blogpost.csproj.CoreCompileInputs.cache
+/home/akclark/Source/blogpost/obj/Debug/netcoreapp2.0/blogpost.AssemblyInfoInputs.cache
+/home/akclark/Source/blogpost/obj/Debug/netcoreapp2.0/blogpost.AssemblyInfo.cs
+/home/akclark/Source/blogpost/obj/Debug/netcoreapp2.0/blogpost.dll
+/home/akclark/Source/blogpost/obj/Debug/netcoreapp2.0/blogpost.pdb
