@@ -1,3 +1,5 @@
 bin/
 www.cryptospace.com/
 obj/
+*.log
+backupindex.html 
