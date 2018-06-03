@@ -1,4 +1,5 @@
 { 
-    "title": "Showing off",
-    "data": "template_incoming"
+    "title": "Blogpost Title Name Goes Here",
+    "data": "template_incoming",
+    "directory": "/var/www/cryptospace/"
 }
