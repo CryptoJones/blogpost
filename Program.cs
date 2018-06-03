@@ -41,7 +41,7 @@ namespace blogpost
                 FileStream firstHalfFileStream = new FileStream("template_first_half", FileMode.Open);
                 using (StreamReader reader = new StreamReader(firstHalfFileStream))
                 {
-                    firstHalf = reader.ReadToEnd();
+                    firstHalf = reader.ReadToEnd().Replace("NEW_DATE",newPageName.Replace(".html",""));
                 }
 
                 FileStream incomingDataFileStream = new FileStream(incomingFileName, FileMode.Open);
