@@ -12,7 +12,7 @@ namespace blogpost
             string documentTemp = String.Empty;
             string middle = String.Empty;
             string linkTitle = String.Empty;
-            string directory = "/var/www/www.cryptospace.com";
+            string directory = String.Empy;
             string newPageName = now.ToString("u").ToString().Substring(0, 10).Replace("\\", "-") + ".html";
             string firstHalf = string.Empty;
             string incomingFileName = string.Empty;
@@ -37,6 +37,7 @@ namespace blogpost
                 // populate variables with object data
                 linkTitle = bp.title;
                 incomingFileName = bp.data;
+                directory = bp.directory;
 
                 FileStream firstHalfFileStream = new FileStream("template_first_half", FileMode.Open);
                 using (StreamReader reader = new StreamReader(firstHalfFileStream))
