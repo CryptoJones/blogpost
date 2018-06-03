@@ -2,8 +2,8 @@
 
 See the blog at http://www.cryptospace.com
 
-To create a blog post, copy the backup index.html file to /var/www/www.cryptospace.com/
+To create a blog post, modify the blogpost.config.json file with the new post subject. 
 
-Modify the blogpost.config.json file.
+Modify the template_incoming file with the post data.
 
 Do a 'dotnet run'
