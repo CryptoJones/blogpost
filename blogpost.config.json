@@ -1,6 +1,5 @@
 { 
-    "title": "Blogpost Title Name Goes Here",
-    "data": "template_incoming",
-    "directory": "/var/www/cryptospace/",
-	"HTML": "<p>My stuff here!</p>"
+"title": "Blogpost Title Name Goes Here",
+"directory": "/var/www/cryptospace/",
+"HTML": "<p>My stuff here!</p>"
 }
