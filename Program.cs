@@ -38,6 +38,7 @@ namespace blogpost
                 linkTitle = bp.title;
                 incomingFileName = bp.data;
                 directory = bp.directory;
+		incomingData = bp.HTML;
 
                 FileStream firstHalfFileStream = new FileStream("template_first_half", FileMode.Open);
                 using (StreamReader reader = new StreamReader(firstHalfFileStream))
@@ -45,12 +46,6 @@ namespace blogpost
                     firstHalf = reader.ReadToEnd().Replace("NEW_DATE",newPageName.Replace(".html",""));
                 }
 
-                FileStream incomingDataFileStream = new FileStream(incomingFileName, FileMode.Open);
-                using (StreamReader reader = new StreamReader(incomingDataFileStream))
-                {
-                    incomingData = reader.ReadToEnd();
-                    middle = incomingData;
-                }
 
                 FileStream secondHalfFileStream = new FileStream("template_second_half", FileMode.Open);
                 using (StreamReader reader = new StreamReader(secondHalfFileStream))
